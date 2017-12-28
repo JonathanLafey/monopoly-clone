@@ -11,67 +11,64 @@
 	<body>
 	
 		<div id="board" class="board">
-			<div id="C1" class="top-lane parking"></div>
-			<div id="C2" class="top-lane property"></div>
-			<div id="C3" class="top-lane chance"></div>
-			<div id="C4" class="top-lane property"></div>
-			<div id="C5" class="top-lane property"></div>
-			<div id="C6" class="top-lane railroad"></div>
-			<div id="C7" class="top-lane property"></div>
-			<div id="C8" class="top-lane property"></div>
-			<div id="C9" class="top-lane water"></div>
-			<div id="C10" class="top-lane property"></div>
-			<div id="C11" class="top-lane go-to-jail"></div>
-			<div id="C12" class="left-lane property"></div>
+			<div id="C1" data-position="21" class="top-lane parking"></div>
+			<div id="C2" data-position="22" class="top-lane property"></div>
+			<div id="C3" data-position="23" class="top-lane chance"></div>
+			<div id="C4" data-position="24" class="top-lane property"></div>
+			<div id="C5" data-position="25" class="top-lane property"></div>
+			<div id="C6" data-position="26" class="top-lane railroad"></div>
+			<div id="C7" data-position="27" class="top-lane property"></div>
+			<div id="C8" data-position="28" class="top-lane property"></div>
+			<div id="C9" data-position="29" class="top-lane water"></div>
+			<div id="C10" data-position="30" class="top-lane property"></div>
+			<div id="C11" data-position="31" class="top-lane go-to-jail"></div>
+			<div id="C12" data-position="20" class="left-lane property"></div>
 			<div id="middle" class="middle">
 				<span id="dice" onclick="rollDice();"></span>
 			</div>
-			<div id="C13" class="right-lane property"></div>
-			<div id="C14" class="left-lane property"></div>
-			<div id="C15" class="right-lane property"></div>
-			<div id="C16" class="left-lane chest"></div>
-			<div id="C17" class="right-lane chest"></div>
-			<div id="C18" class="left-lane property"></div>
-			<div id="C19" class="right-lane property"></div>
-			<div id="C20" class="left-lane railroad"></div>
-			<div id="C21" class="right-lane railroad"></div>
-			<div id="C22" class="left-lane property"></div>
-			<div id="C23" class="right-lane chance"></div>
-			<div id="C24" class="left-lane property"></div>
-			<div id="C25" class="right-lane property"></div>
-			<div id="C26" class="left-lane electric"></div>
-			<div id="C27" class="right-lane luxury-tax"></div>
-			<div id="C28" class="left-lane property"></div>
-			<div id="C29" class="right-lane property"></div>
-			<div id="C30" class="bottom-lane prison"></div>
-			<div id="C31" class="bottom-lane property"></div>
-			<div id="C32" class="bottom-lane property"></div>
-			<div id="C33" class="bottom-lane chance"></div>
-			<div id="C34" class="bottom-lane property"></div>
-			<div id="C35" class="bottom-lane railroad"></div>
-			<div id="C36" class="bottom-lane income-tax"></div>
-			<div id="C37" class="bottom-lane property"></div>
-			<div id="C38" class="bottom-lane chest"></div>
-			<div id="C39" class="bottom-lane property"></div>
-			<div id="C40" class="bottom-lane go"></div>
+			<div id="C13" data-position="32" class="right-lane property"></div>
+			<div id="C14" data-position="19" class="left-lane property"></div>
+			<div id="C15" data-position="33" class="right-lane property"></div>
+			<div id="C16" data-position="18" class="left-lane chest"></div>
+			<div id="C17" data-position="34" class="right-lane chest"></div>
+			<div id="C18" data-position="17" class="left-lane property"></div>
+			<div id="C19" data-position="35" class="right-lane property"></div>
+			<div id="C20" data-position="16" class="left-lane railroad"></div>
+			<div id="C21" data-position="36" class="right-lane railroad"></div>
+			<div id="C22" data-position="15" class="left-lane property"></div>
+			<div id="C23" data-position="37" class="right-lane chance"></div>
+			<div id="C24" data-position="14" class="left-lane property"></div>
+			<div id="C25" data-position="38" class="right-lane property"></div>
+			<div id="C26" data-position="13" class="left-lane electric"></div>
+			<div id="C27" data-position="39" class="right-lane luxury-tax"></div>
+			<div id="C28" data-position="12" class="left-lane property"></div>
+			<div id="C29" data-position="40" class="right-lane property"></div>
+			<div id="C30" data-position="11" class="bottom-lane prison"></div>
+			<div id="C31" data-position="10" class="bottom-lane property"></div>
+			<div id="C32" data-position="9" class="bottom-lane property"></div>
+			<div id="C33" data-position="8" class="bottom-lane chance"></div>
+			<div id="C34" data-position="7" class="bottom-lane property"></div>
+			<div id="C35" data-position="6" class="bottom-lane railroad"></div>
+			<div id="C36" data-position="5" class="bottom-lane income-tax"></div>
+			<div id="C37" data-position="4" class="bottom-lane property"></div>
+			<div id="C38" data-position="3" class="bottom-lane chest"></div>
+			<div id="C39" data-position="2" class="bottom-lane property"></div>
+			<div id="C40" data-position="1" class="bottom-lane go"></div>
 		</div>
 		
 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		
 		<script>
-		
-			// Every step of the animation takes 0,25 seconds
-			// 10 seconds of animation divided by 40 steps
-			const PIECE_MOVE_TIME = 10 / 41;
 			
 			(async () => {
 			
-				// Get all property info from the json file
+				// get all property info from the json file
 				// as we're using await for the Fetch API and the conversion to JSON we need to call these in an async function
-				// Thankfully we're already in an anonymous self-called function so we can just mark it as async.
+				// thankfully we're already in an anonymous self-called function so we can just mark it as async.
 				const properties_json =  await (await fetch('properties.json')).json();
 				console.log(properties_json);
 			
+				// configure the properties
 				let properties = document.getElementById('board').getElementsByClassName('property');
 				for (let property of properties) {
 					
@@ -80,6 +77,7 @@
 					
 					if(property_config == null) continue;
 					
+					// add the related elements like color, names and values based on the config
 					let color_code = document.createElement('div');
 					color_code.className = 'color-code';
 					color_code.style.backgroundColor = property_config.color_code;
@@ -98,52 +96,100 @@
 					
 				}
 				
-				// Add players
-				let player1 = document.createElement('span');
+				// add players
+				const player1 = document.createElement('span');
 				player1.id = 'player1';
 				
 				let go = document.getElementById('board').getElementsByClassName('go')[0];
 				go.appendChild(player1);
 				
-				// Saw initial roll message
-				rollPopup();
+				// and set them to 'go'
+				player1.dataset.position = go.dataset.position;
+				
+				// TODO: pick players' order and keep it in an array
+				
+				// Display initial roll popup
+				rollPopup(player1);
 			
 			})();
 			
 			/**
-			Dice logic taken from
-			https://jsfiddle.net/estelle/6d5Z6/
+			* Dice logic taken from
+			* https://jsfiddle.net/estelle/6d5Z6/
 			*/
-			function rollDice() {
+			function rollDice(player) {
 				
-				let output = '';
+				let dice_faces = '';
 				
+				// compute the number for each dice
 				let dice1Value = Math.floor(Math.random() * 6);
 				let dice2Value = Math.floor(Math.random() * 6);
+				// we need to add plus one to Math.random for the range of 1-6 but the dice unicode for face 1 is 2680 so,
+				// we keep the values 0-5 and we add plus 2 after
+				let diceResult = dice1Value + dice2Value + 2;
 				
-				output += "&#x268" + dice1Value + ";";
-				output += "&#x268" + dice2Value + ";";
-					
-				document.getElementById('dice').innerHTML = output;
-			
+				// and display the related unicode
+				// reference here http://xahlee.info/comp/unicode_games_cards.html
+				dice_faces += "&#x268" + dice1Value + ";";
+				dice_faces += "&#x268" + dice2Value + ";";
+				document.getElementById('dice').innerHTML = dice_faces;
+
 				// start the animation
-				let piece = document.getElementById("player1");
-				piece.style.animationPlayState = "running";
-				// play it for seconds equal to the dice results
+				player.style.animationPlayState = "running";
+				player.style.animationName = computeAnimationChain(parseInt(player.dataset.position), diceResult);
+				player.style.animationDelay = computeAnimationDelays(diceResult);
+				
+				// play it for seconds equal to the dice results in half (so it looks good) and update player's position
 				setTimeout(function() {
-					piece.style.animationPlayState = "paused";
-					rollPopup();
-				}, (dice1Value + dice2Value) * 1000 * PIECE_MOVE_TIME);
+					player.style.animationPlayState = "paused";
+					if (parseInt(player.dataset.position) + diceResult > 40)
+						player.dataset.position = (parseInt(player.dataset.position) + diceResult) - 40;
+					else
+						player.dataset.position = parseInt(player.dataset.position) + diceResult;
+					// TODO: get next player from the list or use the same if dices were equal
+					rollPopup(player);
+				}, diceResult * 500);
 			}
 			
-			function rollPopup() {
+			function computeAnimationChain(position, chainLength) {
+				let animation = "";
+				if (position == 40) {
+					animation = "player_movement40_1";
+					position = 1;
+				}
+				else 
+					animation = "player_movement" + position + "_" + (++position);
+				// the first element is already there so start from 1
+				for(let i=1; i < chainLength; i++) {
+					if (position == 40) {
+							animation = "player_movement40_1";
+						position = 1;
+					}
+					else	
+						animation += ", player_movement" + position + "_" + (++position);
+				}
+				return animation;
+			}
+			
+			function computeAnimationDelays(chainLength) {
+				let delay = "0s";
+				let delay_sec = 0;
+				// the first element is already there so start from 1
+				for(let i=1; i < chainLength; i++) {
+				delay_sec = delay_sec + 0.5;
+					delay += ", " + delay_sec + "s";
+				}
+				return delay;
+			}
+			
+			function rollPopup(player) {
 				swal({
 					title: "It's your turn",
 					button: "Roll!!",
 					closeOnClickOutside: false,
 					closeOnEsc: false
 				})
-				.then(() => rollDice());
+				.then(() => rollDice(player));
 			}
 			
 		</script>

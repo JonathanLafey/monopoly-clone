@@ -8,11 +8,11 @@
 	position: absolute;
 	bottom: 10px;
 	left: 34px;
-	animation-name: player_movement;
-	animation-duration: 10s;
+	/*animation-name: player_movement;*/
+	animation-duration: 0.5s;
 	animation-fill-mode: forwards;
 	animation-timing-function: ease-out;
-	animation-iteration-count: infinite;
+	animation-iteration-count: 1;
 	animation-play-state: paused;
 }
 
