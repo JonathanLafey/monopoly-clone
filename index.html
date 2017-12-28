@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Monopoly</title>
+		
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<link rel="stylesheet" type="text/css" href="grid_setup.css">
+		<link rel="stylesheet" type="text/css" href="players.css">
+		<link rel="stylesheet" type="text/css" href="animations.css">
+	</head>
+	<body>
+	
+		<div id="board" class="board">
+			<div id="C1" class="top-lane parking"></div>
+			<div id="C2" class="top-lane property"></div>
+			<div id="C3" class="top-lane chance"></div>
+			<div id="C4" class="top-lane property"></div>
+			<div id="C5" class="top-lane property"></div>
+			<div id="C6" class="top-lane railroad"></div>
+			<div id="C7" class="top-lane property"></div>
+			<div id="C8" class="top-lane property"></div>
+			<div id="C9" class="top-lane water"></div>
+			<div id="C10" class="top-lane property"></div>
+			<div id="C11" class="top-lane go-to-jail"></div>
+			<div id="C12" class="left-lane property"></div>
+			<div id="middle" class="middle">
+				<span id="dice" onclick="rollDice();"></span>
+			</div>
+			<div id="C13" class="right-lane property"></div>
+			<div id="C14" class="left-lane property"></div>
+			<div id="C15" class="right-lane property"></div>
+			<div id="C16" class="left-lane chest"></div>
+			<div id="C17" class="right-lane chest"></div>
+			<div id="C18" class="left-lane property"></div>
+			<div id="C19" class="right-lane property"></div>
+			<div id="C20" class="left-lane railroad"></div>
+			<div id="C21" class="right-lane railroad"></div>
+			<div id="C22" class="left-lane property"></div>
+			<div id="C23" class="right-lane chance"></div>
+			<div id="C24" class="left-lane property"></div>
+			<div id="C25" class="right-lane property"></div>
+			<div id="C26" class="left-lane electric"></div>
+			<div id="C27" class="right-lane luxury-tax"></div>
+			<div id="C28" class="left-lane property"></div>
+			<div id="C29" class="right-lane property"></div>
+			<div id="C30" class="bottom-lane prison"></div>
+			<div id="C31" class="bottom-lane property"></div>
+			<div id="C32" class="bottom-lane property"></div>
+			<div id="C33" class="bottom-lane chance"></div>
+			<div id="C34" class="bottom-lane property"></div>
+			<div id="C35" class="bottom-lane railroad"></div>
+			<div id="C36" class="bottom-lane income-tax"></div>
+			<div id="C37" class="bottom-lane property"></div>
+			<div id="C38" class="bottom-lane chest"></div>
+			<div id="C39" class="bottom-lane property"></div>
+			<div id="C40" class="bottom-lane go"></div>
+		</div>
+		
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		
+		<script>
+		
+			// Every step of the animation takes 0,25 seconds
+			// 10 seconds of animation divided by 40 steps
+			const PIECE_MOVE_TIME = 10 / 41;
+			
+			(async () => {
+			
+				// Get all property info from the json file
+				// as we're using await for the Fetch API and the conversion to JSON we need to call these in an async function
+				// Thankfully we're already in an anonymous self-called function so we can just mark it as async.
+				const properties_json =  await (await fetch('properties.json')).json();
+				console.log(properties_json);
+			
+				let properties = document.getElementById('board').getElementsByClassName('property');
+				for (let property of properties) {
+					
+					// get config for each property based on the id (property and mark up)
+					let property_config =  properties_json.find(p => p.id === property.id)
+					
+					if(property_config == null) continue;
+					
+					let color_code = document.createElement('div');
+					color_code.className = 'color-code';
+					color_code.style.backgroundColor = property_config.color_code;
+					
+					let property_name = document.createElement('span');
+					property_name.className = 'property-name';
+					property_name.appendChild(document.createTextNode(property_config.property_name));
+					
+					let property_value = document.createElement('span');
+					property_value.className = 'property-value';
+					property_value.appendChild(document.createTextNode(property_config.property_value));
+					
+					property.appendChild(color_code);
+					property.appendChild(property_name);
+					property.appendChild(property_value);
+					
+				}
+				
+				// Add players
+				let player1 = document.createElement('span');
+				player1.id = 'player1';
+				
+				let go = document.getElementById('board').getElementsByClassName('go')[0];
+				go.appendChild(player1);
+				
+				// Saw initial roll message
+				rollPopup();
+			
+			})();
+			
+			/**
+			Dice logic taken from
+			https://jsfiddle.net/estelle/6d5Z6/
+			*/
+			function rollDice() {
+				
+				let output = '';
+				
+				let dice1Value = Math.floor(Math.random() * 6);
+				let dice2Value = Math.floor(Math.random() * 6);
+				
+				output += "&#x268" + dice1Value + ";";
+				output += "&#x268" + dice2Value + ";";
+					
+				document.getElementById('dice').innerHTML = output;
+			
+				// start the animation
+				let piece = document.getElementById("player1");
+				piece.style.animationPlayState = "running";
+				// play it for seconds equal to the dice results
+				setTimeout(function() {
+					piece.style.animationPlayState = "paused";
+					rollPopup();
+				}, (dice1Value + dice2Value) * 1000 * PIECE_MOVE_TIME);
+			}
+			
+			function rollPopup() {
+				swal({
+					title: "It's your turn",
+					button: "Roll!!",
+					closeOnClickOutside: false,
+					closeOnEsc: false
+				})
+				.then(() => rollDice());
+			}
+			
+		</script>
+		
+		
+		
+	</body>
+</html>

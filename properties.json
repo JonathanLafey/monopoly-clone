@@ -1,0 +1,134 @@
+[
+	{
+		"id": "C39",
+		"color_code": "#a52a2a",
+		"property_name": "Mediterranean Avenue",
+		"property_value": "$60"
+	},
+	{
+		"id": "C37",
+		"color_code": "#a52a2a",
+		"property_name": "Baltic Avenue",
+		"property_value": "$60"
+	},
+	{
+		"id": "C34",
+		"color_code": "#80CCFF",
+		"property_name": "Oriental Avenue",
+		"property_value": "$100"
+	},
+	{
+		"id": "C32",
+		"color_code": "#80CCFF",
+		"property_name": "Vermont Avenue",
+		"property_value": "$100"
+	},
+	{
+		"id": "C31",
+		"color_code": "#80CCFF",
+		"property_name": "Connecticut Avenue",
+		"property_value": "$120"
+	},
+	{
+		"id": "C28",
+		"color_code": "hotPink",
+		"property_name": "St. Charles Place",
+		"property_value": "$140"
+	},
+	{
+		"id": "C24",
+		"color_code": "hotPink",
+		"property_name": "States Avenue",
+		"property_value": "$140"
+	},
+	{
+		"id": "C22",
+		"color_code": "hotPink",
+		"property_name": "Virginia Avenue",
+		"property_value": "$160"
+	},
+	{
+		"id": "C18",
+		"color_code": "#FF8000",
+		"property_name": "St. James Place",
+		"property_value": "$180"
+	},
+	{
+		"id": "C14",
+		"color_code": "#FF8000",
+		"property_name": "Tennessee Avenue",
+		"property_value": "$180"
+	},
+	{
+		"id": "C12",
+		"color_code": "#FF8000",
+		"property_name": "New York Avenue",
+		"property_value": "$200"
+	},
+	{
+		"id": "C2",
+		"color_code": "#FF0000",
+		"property_name": "Kentucky Avenue",
+		"property_value": "$220"
+	},
+	{
+		"id": "C4",
+		"color_code": "#FF0000",
+		"property_name": "Indiana Avenue",
+		"property_value": "$220"
+	},
+	{
+		"id": "C5",
+		"color_code": "#FF0000",
+		"property_name": "Illinois Avenue",
+		"property_value": "$240"
+	},
+	{
+		"id": "C7",
+		"color_code": "yellow",
+		"property_name": "Atlantic Avenue",
+		"property_value": "$260"
+	},
+	{
+		"id": "C8",
+		"color_code": "yellow",
+		"property_name": "Ventnor Avenue",
+		"property_value": "$260"
+	},
+	{
+		"id": "C10",
+		"color_code": "yellow",
+		"property_name": "Marvin Gardens",
+		"property_value": "$280"
+	},
+	{
+		"id": "C13",
+		"color_code": "green",
+		"property_name": "Pacific Avenue",
+		"property_value": "$300"
+	},
+	{
+		"id": "C15",
+		"color_code": "green",
+		"property_name": "North Carolina Avenue",
+		"property_value": "$300"
+	},
+	{
+		"id": "C17",
+		"color_code": "green",
+		"property_name": "Pennsylvania Avenue",
+		"property_value": "$320"
+	},
+	{
+		"id": "C25",
+		"color_code": "#2020CC",
+		"property_name": "Park Place",
+		"property_value": "$350"
+	},
+	{
+		"id": "C29",
+		"color_code": "#2020CC",
+		"property_name": "Boardwalk",
+		"property_value": "$400"
+	}
+]

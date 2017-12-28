@@ -1,0 +1,47 @@
+/* Animations */
+
+@keyframes player_movement {
+	0%, 100% {transform: translate(0, 0);}
+	2.44% {transform: translate(-93px, 0);}
+	4.88% {transform: translate(-163px, 0);}
+	7.32% {transform: translate(-233px, 0);}
+	9.76% {transform: translate(-303px, 0);}
+	12.2% {transform: translate(-373px, 0);}
+	14.63% {transform: translate(-443px, 0);}
+	17.07% {transform: translate(-513px, 0);}
+	19.51% {transform: translate(-583px, 0);}
+	21.95% {transform: translate(-653px, 0);}
+	24.39% {transform: translate(-766px, 0);}
+	26.83% {transform: translate(-766px, -120px);}
+	29.27% {transform: translate(-766px, -190px);}
+	31.71% {transform: translate(-766px, -260px);}
+	34.15% {transform: translate(-766px, -330px);}
+	36.59% {transform: translate(-766px, -400px);}
+	39.02% {transform: translate(-766px, -470px);}
+	41.46% {transform: translate(-766px, -540px);}
+	43.9% {transform: translate(-766px, -610px);}
+	46.34% {transform: translate(-766px, -680px);}
+	48.78% {transform: translate(-766px, -790px);}
+	51.22% {transform: translate(-653px, -790px);}
+	53.66% {transform: translate(-583px, -790px);}
+	56.1% {transform: translate(-513px, -790px);}
+	58.54% {transform: translate(-443px, -790px);}
+	60.98% {transform: translate(-373px, -790px);}
+	63.41% {transform: translate(-303px, -790px);}
+	65.85% {transform: translate(-233px, -790px);}
+	68.29% {transform: translate(-163px, -790px);}
+	70.73% {transform: translate(-93px, -790px);}
+	73.17% {transform: translate(-0px, -790px);}
+	75.61% {transform: translate(0px, -790px);}
+	78.05% {transform: translate(0px, -680px);}
+	80.49% {transform: translate(0px, -610px);}
+	82.93% {transform: translate(0px, -540px);}
+	85.37% {transform: translate(0px, -470px);}
+	87.8% {transform: translate(0px, -400px);}
+	90.24% {transform: translate(0px, -330px);}
+	92.68% {transform: translate(0px, -260px);}
+	95.12% {transform: translate(0px, -190px);}
+	97.56% {transform: translate(0px, -120px);}
+}
+
+/* /Animations */

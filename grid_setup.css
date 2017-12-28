@@ -1,0 +1,20 @@
+/* Grid Setup */
+
+.board {
+	display: grid;
+	grid-template-columns: 
+		[col1 col-start] 120px 
+		repeat(9, 70px [col])
+		[col11 col-end] 120px;
+	grid-template-rows: 
+		[row1 row-start] 120px 
+		repeat(9, 70px [row])
+		[row11 row-end] 120px;
+}
+
+.middle {
+	grid-column: 2 / 11;
+	grid-row: 2 / 11;
+}
+
+/* /Grid Setup */

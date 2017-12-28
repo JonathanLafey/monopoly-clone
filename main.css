@@ -1,0 +1,100 @@
+body {
+	margin: 10px;
+}
+
+.go, .prison, .go-to-jail, .parking, .middle,
+.railroad, .chance, .chest, .luxury-tax, .income-tax, .water, .electric, .property {
+	background-color: #cce8cf;
+	border: 1px solid black;
+	position: relative;
+}
+
+.top-lane, .left-lane {
+	transform: rotate(180deg);
+}
+
+.top-lane > .color-code, 
+.bottom-lane > .color-code {
+	height: 20%;
+}
+
+.left-lane > .color-code,
+.right-lane > .color-code {
+	height: 100%;
+	width: 20%;
+	display: inline-block;
+}
+
+.left-lane > .property-name,
+.right-lane > .property-name {
+	transform: rotate(-90deg);
+	display: inline-block;
+	width: 65px;
+	text-align: center;
+	word-wrap: break-word;
+	position: absolute;
+	height: 85%;
+	top: 8%;
+}
+
+.top-lane > .property-name,
+.bottom-lane > .property-name {
+	text-align: center;
+	padding-top: 10%;
+	display: block;
+	word-wrap: break-word;
+	width: 85%;
+	margin: 0 auto 0 auto;
+}
+
+.left-lane > .property-value,
+.right-lane > .property-value {
+	transform: translateY(-280%) translateX(74%) rotate(-90deg);
+	display: inline-block;
+	width: 70px;
+	text-align: center;
+	font-size: 0.6rem;
+}
+
+.top-lane > .property-value,
+.bottom-lane > .property-value {
+	text-align: center;
+	display: block;
+	font-size: 0.6rem;
+	position: absolute;
+	bottom: 2%;
+	width: 100%;
+}
+
+.property-name {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+}
+
+.property-value {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 10px;
+	text-transform: uppercase;
+}
+
+#dice {
+	font-size: 4rem;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+}
+
+.swal-footer {
+    text-align: center;
+}
+
+.swal-button, .swal-button:active {
+    background-color: green;
+}
