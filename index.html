@@ -56,16 +56,29 @@
 			<div id="C40" data-position="1" class="bottom-lane go"></div>
 		</div>
 		
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<dialog id="dialog">
+			<h1>It's your turn</h1>
+			<button id="roll">Roll!!!</button>
+		</dialog>
 		
 		<script>
+			
+			// Define player list globally
+			window.playerOrder = [];
+			window.playerOrder.nextPlayer = () => {
+				if(this.length > 0) {
+					this.push(this.shift());
+					return this[0];
+				}
+				else return [];
+			};
 			
 			(async () => {
 			
 				// get all property info from the json file
 				// as we're using await for the Fetch API and the conversion to JSON we need to call these in an async function
 				// thankfully we're already in an anonymous self-called function so we can just mark it as async.
-				const properties_json =  await (await fetch('properties.json')).json();
+				const properties_json = await (await fetch('properties.json')).json();
 				console.log(properties_json);
 			
 				// configure the properties
@@ -107,9 +120,18 @@
 				player1.dataset.position = go.dataset.position;
 				
 				// TODO: pick players' order and keep it in an array
+				window.playerOrder.push(player1);
+				
+				const dialog = document.getElementById('dialog');
+				const rollButton = document.getElementById('roll');
 				
 				// Display initial roll popup
-				rollPopup(player1);
+				dialog.showModal();
+				
+				rollButton.addEventListener('click', () => {
+					dialog.close();
+					rollDice(window.playerOrder[0]);
+				});
 			
 			})();
 			
@@ -146,8 +168,15 @@
 						player.dataset.position = (parseInt(player.dataset.position) + diceResult) - 40;
 					else
 						player.dataset.position = parseInt(player.dataset.position) + diceResult;
-					// TODO: get next player from the list or use the same if dices were equal
-					rollPopup(player);
+						
+					// move list to next player from the list or use the same if dices were equal
+					// TODO: count times of seq equals
+					if(dice1Value !== dice2Value) {
+						window.playerOrder.nextPlayer();
+					}
+					
+					// Time for next roll...
+					dialog.showModal();
 				}, diceResult * 500);
 			}
 			
@@ -182,19 +211,7 @@
 				return delay;
 			}
 			
-			function rollPopup(player) {
-				swal({
-					title: "It's your turn",
-					button: "Roll!!",
-					closeOnClickOutside: false,
-					closeOnEsc: false
-				})
-				.then(() => rollDice(player));
-			}
-			
 		</script>
-		
-		
 		
 	</body>
 </html>
