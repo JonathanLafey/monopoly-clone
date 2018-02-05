@@ -2,6 +2,46 @@ body {
 	margin: 10px;
 }
 
+#settings {
+	position: fixed;
+	right: 0px;
+	background: transparent;
+	border: none;
+}
+
+#settings > span {
+	background: url(cog.svg);
+    width: 1.3rem;
+    height: 1.3rem;
+    display: block;
+    opacity: 0.6;
+    transition: all 0.2s ease-out;
+    transition-property: opacity, transform;
+	z-index: 110;
+}
+
+#settings > span:hover {
+    opacity: 1;
+    transform: rotate(45deg);
+}
+
+#settings_menu::backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+	z-index: 10;
+}
+
+#roll {
+	visibility: hidden;
+	left: 18rem;
+    top: 15rem;
+    position: relative;
+}
+
 .go, .prison, .go-to-jail, .parking, .middle,
 .railroad, .chance, .chest, .luxury-tax, .income-tax, .water, .electric, .property {
 	background-color: #cce8cf;

@@ -1,6 +1,54 @@
 /* Players */
 
+#player0 {
+	background-image: url("hat.svg");
+	height: 3rem;
+	width: 3rem;
+	background-size: contain;
+	position: absolute;
+	bottom: 10px;
+	left: 34px;
+	/*animation-name: player_movement;*/
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1;
+	animation-play-state: paused;
+}
+
 #player1 {
+	background-image: url("hat.svg");
+	height: 3rem;
+	width: 3rem;
+	background-size: contain;
+	position: absolute;
+	bottom: 10px;
+	left: 34px;
+	/*animation-name: player_movement;*/
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1;
+	animation-play-state: paused;
+}
+
+#player2 {
+	background-image: url("hat.svg");
+	height: 3rem;
+	width: 3rem;
+	background-size: contain;
+	position: absolute;
+	bottom: 10px;
+	left: 34px;
+	/*animation-name: player_movement;*/
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1;
+	animation-play-state: paused;
+}
+
+#player3 {
 	background-image: url("hat.svg");
 	height: 3rem;
 	width: 3rem;

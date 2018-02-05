@@ -9,7 +9,16 @@
 		<link rel="stylesheet" type="text/css" href="animations.css">
 	</head>
 	<body>
-	
+		
+		<button id="settings" onclick="openSettingsMenu();">
+			<span></span>
+		</button>
+		<dialog id="settings_menu">
+			<input type="number" id="player_number" value="1" min="1" max="4" placeholder="The number of players (1-4)">
+			<button id="restart" onclick="location.reload();">Restart</button>
+			<button id="settings_close" onclick="saveSettingsMenu();">Save</button>
+		</dialog>
+		
 		<div id="board" class="board">
 			<div id="C1" data-position="21" class="top-lane parking"></div>
 			<div id="C2" data-position="22" class="top-lane property"></div>
@@ -24,6 +33,7 @@
 			<div id="C11" data-position="31" class="top-lane go-to-jail"></div>
 			<div id="C12" data-position="20" class="left-lane property"></div>
 			<div id="middle" class="middle">
+				<button id="roll">Roll!!!</button>
 				<span id="dice" onclick="rollDice();"></span>
 			</div>
 			<div id="C13" data-position="32" class="right-lane property"></div>
@@ -56,160 +66,16 @@
 			<div id="C40" data-position="1" class="bottom-lane go"></div>
 		</div>
 		
-		<dialog id="dialog">
+		<!-- <dialog id="dialog">
 			<h1>It's your turn</h1>
 			<button id="roll">Roll!!!</button>
-		</dialog>
+		</dialog> -->
+		
+		
+		<script type="text/javascript" src="init.js"></script>
+		<script type="text/javascript" src="logic.js"></script>
 		
 		<script>
-			
-			// Define player list globally
-			window.playerOrder = [];
-			window.playerOrder.nextPlayer = () => {
-				if(this.length > 0) {
-					this.push(this.shift());
-					return this[0];
-				}
-				else return [];
-			};
-			
-			(async () => {
-			
-				// get all property info from the json file
-				// as we're using await for the Fetch API and the conversion to JSON we need to call these in an async function
-				// thankfully we're already in an anonymous self-called function so we can just mark it as async.
-				const properties_json = await (await fetch('properties.json')).json();
-				console.log(properties_json);
-			
-				// configure the properties
-				let properties = document.getElementById('board').getElementsByClassName('property');
-				for (let property of properties) {
-					
-					// get config for each property based on the id (property and mark up)
-					let property_config =  properties_json.find(p => p.id === property.id)
-					
-					if(property_config == null) continue;
-					
-					// add the related elements like color, names and values based on the config
-					let color_code = document.createElement('div');
-					color_code.className = 'color-code';
-					color_code.style.backgroundColor = property_config.color_code;
-					
-					let property_name = document.createElement('span');
-					property_name.className = 'property-name';
-					property_name.appendChild(document.createTextNode(property_config.property_name));
-					
-					let property_value = document.createElement('span');
-					property_value.className = 'property-value';
-					property_value.appendChild(document.createTextNode(property_config.property_value));
-					
-					property.appendChild(color_code);
-					property.appendChild(property_name);
-					property.appendChild(property_value);
-					
-				}
-				
-				// add players
-				const player1 = document.createElement('span');
-				player1.id = 'player1';
-				
-				let go = document.getElementById('board').getElementsByClassName('go')[0];
-				go.appendChild(player1);
-				
-				// and set them to 'go'
-				player1.dataset.position = go.dataset.position;
-				
-				// TODO: pick players' order and keep it in an array
-				window.playerOrder.push(player1);
-				
-				const dialog = document.getElementById('dialog');
-				const rollButton = document.getElementById('roll');
-				
-				// Display initial roll popup
-				dialog.showModal();
-				
-				rollButton.addEventListener('click', () => {
-					dialog.close();
-					rollDice(window.playerOrder[0]);
-				});
-			
-			})();
-			
-			/**
-			* Dice logic taken from
-			* https://jsfiddle.net/estelle/6d5Z6/
-			*/
-			function rollDice(player) {
-				
-				let dice_faces = '';
-				
-				// compute the number for each dice
-				let dice1Value = Math.floor(Math.random() * 6);
-				let dice2Value = Math.floor(Math.random() * 6);
-				// we need to add plus one to Math.random for the range of 1-6 but the dice unicode for face 1 is 2680 so,
-				// we keep the values 0-5 and we add plus 2 after
-				let diceResult = dice1Value + dice2Value + 2;
-				
-				// and display the related unicode
-				// reference here http://xahlee.info/comp/unicode_games_cards.html
-				dice_faces += "&#x268" + dice1Value + ";";
-				dice_faces += "&#x268" + dice2Value + ";";
-				document.getElementById('dice').innerHTML = dice_faces;
-
-				// start the animation
-				player.style.animationPlayState = "running";
-				player.style.animationName = computeAnimationChain(parseInt(player.dataset.position), diceResult);
-				player.style.animationDelay = computeAnimationDelays(diceResult);
-				
-				// play it for seconds equal to the dice results in half (so it looks good) and update player's position
-				setTimeout(function() {
-					player.style.animationPlayState = "paused";
-					if (parseInt(player.dataset.position) + diceResult > 40)
-						player.dataset.position = (parseInt(player.dataset.position) + diceResult) - 40;
-					else
-						player.dataset.position = parseInt(player.dataset.position) + diceResult;
-						
-					// move list to next player from the list or use the same if dices were equal
-					// TODO: count times of seq equals
-					if(dice1Value !== dice2Value) {
-						window.playerOrder.nextPlayer();
-					}
-					
-					// Time for next roll...
-					dialog.showModal();
-				}, diceResult * 500);
-			}
-			
-			function computeAnimationChain(position, chainLength) {
-				let animation = "";
-				if (position == 40) {
-					animation = "player_movement40_1";
-					position = 1;
-				}
-				else 
-					animation = "player_movement" + position + "_" + (++position);
-				// the first element is already there so start from 1
-				for(let i=1; i < chainLength; i++) {
-					if (position == 40) {
-							animation = "player_movement40_1";
-						position = 1;
-					}
-					else	
-						animation += ", player_movement" + position + "_" + (++position);
-				}
-				return animation;
-			}
-			
-			function computeAnimationDelays(chainLength) {
-				let delay = "0s";
-				let delay_sec = 0;
-				// the first element is already there so start from 1
-				for(let i=1; i < chainLength; i++) {
-				delay_sec = delay_sec + 0.5;
-					delay += ", " + delay_sec + "s";
-				}
-				return delay;
-			}
 			
 		</script>
 		
