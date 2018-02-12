@@ -48,6 +48,9 @@ window.playerOrder.nextPlayer = () => {
 	window.settings_menu = document.getElementById('settings_menu');
 	window.rollButton = document.getElementById('roll');
 	
+	// open settings at start
+	window.settings_menu.showModal();
+	
 	// Display initial roll popup
 	window.rollButton.style.visibility = 'visible';
 	
