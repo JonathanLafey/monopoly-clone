@@ -1,7 +1,6 @@
 // Define player list globally
 window.playerOrder = [];
 window.playerOrder.nextPlayer = () => {
-	console.log(this.playerOrder);
 	if(this.playerOrder.length > 0) {
 		this.playerOrder.push(this.playerOrder.shift());
 		return this.playerOrder[0];
@@ -49,7 +48,7 @@ window.playerOrder.nextPlayer = () => {
 	window.rollButton = document.getElementById('roll');
 	
 	// open settings at start
-	window.settings_menu.showModal();
+	openSettingsMenu();
 	
 	// Display initial roll popup
 	window.rollButton.style.visibility = 'visible';
@@ -58,5 +57,7 @@ window.playerOrder.nextPlayer = () => {
 		rollButton.style.visibility = 'hidden';
 		rollDice(window.playerOrder[0]);
 	});
+	
+	window.hasGameStarted = false;
 
 })();

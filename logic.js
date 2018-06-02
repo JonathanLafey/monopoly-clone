@@ -18,6 +18,17 @@ function rollDice(player) {
 	dice_faces += "&#x268" + dice1Value + ";";
 	dice_faces += "&#x268" + dice2Value + ";";
 	document.getElementById('dice').innerHTML = dice_faces;
+	
+	// count player's consequent equal rolls
+	if(dice1Value == dice2Value) {
+		player.dataset.roll_count++;
+	}
+	
+	// if the player rolled equals for 3rd time, sent him to jail
+	if(player.dataset.roll_count == 3) {
+		let prison_position = parseInt(document.getElementById('board').getElementsByClassName('prison')[0].dataset.position);
+		diceResult = (parseInt(player.dataset.position) > prison_position) ? 40 - parseInt(player.dataset.position) + prison_position : prison_position - parseInt(player.dataset.position);
+	}
 
 	// start the animation
 	player.style.animationPlayState = "running";
@@ -33,8 +44,9 @@ function rollDice(player) {
 			player.dataset.position = parseInt(player.dataset.position) + diceResult;
 			
 		// move list to next player from the list or use the same if dices were equal
-		// TODO: count times of seq equals
-		if(dice1Value != dice2Value) {
+		if(dice1Value != dice2Value || player.dataset.roll_count == 3) {
+			// reset player's roll count
+			player.dataset.roll_count = 0;
 			window.playerOrder.nextPlayer();
 		}
 		
@@ -54,7 +66,7 @@ function computeAnimationChain(position, chainLength) {
 	// the first element is already there so start from 1
 	for(let i=1; i < chainLength; i++) {
 		if (position == 40) {
-				animation = "player_movement40_1";
+			animation += ", player_movement40_1";
 			position = 1;
 		}
 		else	
@@ -75,12 +87,28 @@ function computeAnimationDelays(chainLength) {
 }
 
 function openSettingsMenu() {
+	if(window.hasGameStarted) {
+		document.getElementById('settings_save').style.display = 'none';
+		document.getElementById('settings_cancel').style.display = 'inline-block';
+		document.getElementById('player_number').style.display = 'none';
+	}
+	else {
+		document.getElementById('settings_save').style.display = 'inline-block';
+		document.getElementById('settings_cancel').style.display = 'none';
+		document.getElementById('player_number').style.display = 'inline-block';
+	}
 	window.settings_menu.showModal();
+}
+
+function closeSettingsMenu() {
+	window.settings_menu.close();
 }
 
 function saveSettingsMenu() {
 	let player_number = document.getElementById("player_number").value;
 	setupPlayers(player_number);
+	// start the game
+	window.hasGameStarted = true;
 	window.settings_menu.close();
 }
 
@@ -91,6 +119,9 @@ function setupPlayers(number){
 		// add players
 		let player = document.createElement('span');
 		player.id = 'player' + i;
+		
+		// set their roll count to 0
+		player.dataset.roll_count = 0;
 		
 		// and set them to 'go'
 		go.appendChild(player);
