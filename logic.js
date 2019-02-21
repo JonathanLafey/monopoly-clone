@@ -21,32 +21,32 @@ function rollDice(player) {
 	
 	// count player's consequent equal rolls
 	if(dice1Value == dice2Value) {
-		player.dataset.roll_count++;
+		player.roll_count++;
 	}
 	
 	// if the player rolled equals for 3rd time, sent him to jail
-	if(player.dataset.roll_count == 3) {
+	if(player.roll_count == 3) {
 		let prison_position = parseInt(document.getElementById('board').getElementsByClassName('prison')[0].dataset.position);
-		diceResult = (parseInt(player.dataset.position) > prison_position) ? 40 - parseInt(player.dataset.position) + prison_position : prison_position - parseInt(player.dataset.position);
+		diceResult = (player.position > prison_position) ? 40 - player.position + prison_position : prison_position - player.position;
 	}
 
 	// start the animation
-	player.style.animationPlayState = "running";
-	player.style.animationName = computeAnimationChain(parseInt(player.dataset.position), diceResult);
-	player.style.animationDelay = computeAnimationDelays(diceResult);
+	player.token.style.animationPlayState = "running";
+	player.token.style.animationName = computeAnimationChain(player.position, diceResult);
+	player.token.style.animationDelay = computeAnimationDelays(diceResult);
 	
 	// play it for seconds equal to the dice results in half (so it looks good) and update player's position
 	setTimeout(function() {
-		player.style.animationPlayState = "paused";
-		if (parseInt(player.dataset.position) + diceResult > 40)
-			player.dataset.position = (parseInt(player.dataset.position) + diceResult) - 40;
+		player.token.style.animationPlayState = "paused";
+		if (player.position + diceResult > 40)
+			player.position = (player.position + diceResult) - 40;
 		else
-			player.dataset.position = parseInt(player.dataset.position) + diceResult;
+			player.position = player.position + diceResult;
 			
 		// move list to next player from the list or use the same if dices were equal
-		if(dice1Value != dice2Value || player.dataset.roll_count == 3) {
+		if(dice1Value != dice2Value || player.roll_count == 3) {
 			// reset player's roll count
-			player.dataset.roll_count = 0;
+			player.roll_count = 0;
 			window.playerOrder.nextPlayer();
 		}
 		
@@ -80,53 +80,8 @@ function computeAnimationDelays(chainLength) {
 	let delay_sec = 0;
 	// the first element is already there so start from 1
 	for(let i=1; i < chainLength; i++) {
-	delay_sec = delay_sec + 0.5;
+		delay_sec = delay_sec + 0.5;
 		delay += ", " + delay_sec + "s";
 	}
 	return delay;
-}
-
-function openSettingsMenu() {
-	if(window.hasGameStarted) {
-		document.getElementById('settings_save').style.display = 'none';
-		document.getElementById('settings_cancel').style.display = 'inline-block';
-		document.getElementById('player_number').style.display = 'none';
-	}
-	else {
-		document.getElementById('settings_save').style.display = 'inline-block';
-		document.getElementById('settings_cancel').style.display = 'none';
-		document.getElementById('player_number').style.display = 'inline-block';
-	}
-	window.settings_menu.showModal();
-}
-
-function closeSettingsMenu() {
-	window.settings_menu.close();
-}
-
-function saveSettingsMenu() {
-	let player_number = document.getElementById("player_number").value;
-	setupPlayers(player_number);
-	// start the game
-	window.hasGameStarted = true;
-	window.settings_menu.close();
-}
-
-function setupPlayers(number){
-	let go = document.getElementById('board').getElementsByClassName('go')[0];
-	
-	for(let i=0;i<number;i++) {
-		// add players
-		let player = document.createElement('span');
-		player.id = 'player' + i;
-		
-		// set their roll count to 0
-		player.dataset.roll_count = 0;
-		
-		// and set them to 'go'
-		go.appendChild(player);
-		player.dataset.position = go.dataset.position;
-		
-		window.playerOrder.push(player);
-	}
 }
