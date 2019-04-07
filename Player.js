@@ -1,8 +1,9 @@
+import Board from './Board.js';
+
 // All players have money
 // All players are added and substructed money
-// 
 
-export class Player {
+export default class Player {
 	constructor (id, position) {
 		this.id = id;
 		this.roll_count = 0;
@@ -21,16 +22,17 @@ export class Player {
 		this.position = parseInt(tile.dataset.position) || 0;
 	}
 	
+	/**
+	 * Creates the number of players provided and set them on the board
+	 */
 	static setupPlayers (number) {
-		let go = document.getElementById('board').getElementsByClassName('go')[0];
-		
 		for(let i=0;i<number;i++) {
 			// add players
 			const player = new this('player' + i);
-			// and set them to 'go'
-			player.placeOnBoard(go);
-			// also add them globally
-			window.playerOrder.push(player);
+			// set them to 'go'
+			player.placeOnBoard(Board.go);
+			// also add them player list
+			Board.addPlayer(player);
 		}
 	}
 }
