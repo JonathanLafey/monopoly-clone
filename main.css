@@ -42,8 +42,7 @@ body {
     position: relative;
 }
 
-.go, .prison, .go-to-jail, .parking, .middle,
-.railroad, .chance, .chest, .luxury-tax, .income-tax, .water, .electric, .property {
+.board-block {
 	background-color: #cce8cf;
 	border: 1px solid black;
 	position: relative;
@@ -108,18 +107,18 @@ body {
 
 .property-name {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 10px;
+	font-size: 0.4vw;
 	text-transform: uppercase;
 }
 
 .property-value {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	font-size: 10px;
+	font-size: 0.4vw;
 	text-transform: uppercase;
 }
 
 #dice {
-	font-size: 4rem;
+	font-size: 13vh;
 	position: absolute;
     top: 50%;
     left: 50%;

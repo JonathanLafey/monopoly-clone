@@ -1,15 +1,46 @@
 /* Grid Setup */
 
-.board {
+#container {
 	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+	grid-gap: 1rem;
+}
+
+.inventory {
+	background-color: black;
+	height: 50vh;
+}
+
+/*
+.board::before {
+  content: '';
+  width: 0;
+  padding-bottom: 100%;
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+}
+.board > *:first-child {
+  grid-row: 1 / 1;
+  grid-column: 1 / 1;
+}
+*/
+
+.board {
+	/*grid-column: span 2;*/
+	
+	display: grid;
+	/* 100% height - 20px space / 13 boxes (9 + 2 doubles) */
 	grid-template-columns: 
-		[col1 col-start] 120px 
-		repeat(9, 70px [col])
-		[col11 col-end] 120px;
+		[col1 col-start] calc((100vh - 20px)/6.5)
+		repeat(9, calc((100vh - 20px)/13) [col])
+		[col11 col-end] calc((100vh - 20px)/6.5);
 	grid-template-rows: 
-		[row1 row-start] 120px 
-		repeat(9, 70px [row])
-		[row11 row-end] 120px;
+		[row1 row-start] calc((100vh - 20px)/6.5)
+		repeat(9, calc((100vh - 20px)/13) [row])
+		[row11 row-end] calc((100vh - 20px)/6.5);
+	
+	justify-content: center;
+	align-content: center;
 }
 
 .middle {

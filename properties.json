@@ -114,7 +114,7 @@
 		"property_value": "$300"
 	},
 	{
-		"id": "C17",
+		"id": "C19",
 		"color_code": "green",
 		"property_name": "Pennsylvania Avenue",
 		"property_value": "$320"
@@ -130,5 +130,87 @@
 		"color_code": "#2020CC",
 		"property_name": "Boardwalk",
 		"property_value": "$400"
+	},
+	{
+		"id": "C20",
+		"property_name": "Pennsylvania Railroad",
+		"property_value": "$200"
+	},
+	{
+		"id": "C21",
+		"property_name": "Short Line",
+		"property_value": "$200"
+	},
+	{
+		"id": "C35",
+		"property_name": "Reading Railroad",
+		"property_value": "$200"
+	},
+	{
+		"id": "C6",
+		"property_name": "B & O  Railroad",
+		"property_value": "$200"
+	},
+	{
+		"id": "C9",
+		"property_name": "Waterworks",
+		"property_value": "$120"
+	},
+	{
+		"id": "C26",
+		"property_name": "Electric Company",
+		"property_value": "$150"
+	},
+	{
+		"id": "C1",
+		"title": "Free Parking"
+	},
+	{
+		"id": "C11",
+		"title": "Go To Jail"
+	},
+	{
+		"id": "C30",
+		"title": "Just Visiting"
+	},
+	{
+		"id": "C40",
+		"title": "Collect $200,00 Salary as you pass"
+	},
+	{
+		"id": "C3",
+		"title": "Chance"
+	},
+	{
+		"id": "C33",
+		"title": "Chance"
+	},
+	{
+		"id": "C23",
+		"title": "Chance"
+	},
+	{
+		"id": "C16",
+		"title": "Community Chest"
+	},
+	{
+		"id": "C17",
+		"title": "Community Chest"
+	},
+	{
+		"id": "C38",
+		"title": "Community Chest"
+	},
+	{
+		"id": "C36",
+		"title": "Income Tax"
+	},
+	{
+		"id": "C27",
+		"title": "Luxury Tax"
+	},
+	{
+		"id": "C0",
+		"title": ""
 	}
 ]

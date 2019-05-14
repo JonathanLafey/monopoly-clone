@@ -94,8 +94,8 @@ class Dice {
 		// if the player rolled equals for 3rd time, sent him to jail
 		// TODO: some kind the animations for this are clanky
 		if(player.roll_count == 3) {
-			let prison_position = parseInt(Board.prison.dataset.position);
-			diceResult = (player.position > prison_position) ? 40 - player.position + prison_position : prison_position - player.position;
+			let jail_position = parseInt(Board.jail.dataset.position);
+			diceResult = (player.position > jail_position) ? 40 - player.position + jail_position : jail_position - player.position;
 		}
 
 		// start the animation

@@ -8,3 +8,7 @@ This is a monopoly clone just for practice purposes.
 * Add money logic
 * Add building logic
 * Add layouts with stats
+
+# Examples
+https://codepen.io/geoffgraham/pen/QOjmyx
+https://codepen.io/johnnycopes/pen/yzQyMp

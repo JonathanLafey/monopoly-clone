@@ -19,52 +19,55 @@
 			<button id="settings_save">Save</button>
 			<button id="settings_cancel">Cancel</button>
 		</dialog>
-		
+		<div id="container">
 		<div id="board" class="board">
-			<div id="C1" data-position="21" class="top-lane parking"></div>
-			<div id="C2" data-position="22" class="top-lane property"></div>
-			<div id="C3" data-position="23" class="top-lane chance"></div>
-			<div id="C4" data-position="24" class="top-lane property"></div>
-			<div id="C5" data-position="25" class="top-lane property"></div>
-			<div id="C6" data-position="26" class="top-lane railroad"></div>
-			<div id="C7" data-position="27" class="top-lane property"></div>
-			<div id="C8" data-position="28" class="top-lane property"></div>
-			<div id="C9" data-position="29" class="top-lane water"></div>
-			<div id="C10" data-position="30" class="top-lane property"></div>
-			<div id="C11" data-position="31" class="top-lane go-to-jail"></div>
-			<div id="C12" data-position="20" class="left-lane property"></div>
+			<div id="C1" data-position="21" class="board-block top-lane parking"></div>
+			<div id="C2" data-position="22" class="board-block top-lane property"></div>
+			<div id="C3" data-position="23" class="board-block top-lane chance"></div>
+			<div id="C4" data-position="24" class="board-block top-lane property"></div>
+			<div id="C5" data-position="25" class="board-block top-lane property"></div>
+			<div id="C6" data-position="26" class="board-block top-lane property railroad"></div>
+			<div id="C7" data-position="27" class="board-block top-lane property"></div>
+			<div id="C8" data-position="28" class="board-block top-lane property"></div>
+			<div id="C9" data-position="29" class="board-block top-lane property water"></div>
+			<div id="C10" data-position="30" class="board-block top-lane property"></div>
+			<div id="C11" data-position="31" class="board-block top-lane go-to-jail"></div>
+			<div id="C12" data-position="20" class="board-block left-lane property"></div>
 			<div id="middle" class="middle">
 				<button id="roll">Roll!!!</button>
 				<span id="dice" onclick="rollDice();"></span>
 			</div>
-			<div id="C13" data-position="32" class="right-lane property"></div>
-			<div id="C14" data-position="19" class="left-lane property"></div>
-			<div id="C15" data-position="33" class="right-lane property"></div>
-			<div id="C16" data-position="18" class="left-lane chest"></div>
-			<div id="C17" data-position="34" class="right-lane chest"></div>
-			<div id="C18" data-position="17" class="left-lane property"></div>
-			<div id="C19" data-position="35" class="right-lane property"></div>
-			<div id="C20" data-position="16" class="left-lane railroad"></div>
-			<div id="C21" data-position="36" class="right-lane railroad"></div>
-			<div id="C22" data-position="15" class="left-lane property"></div>
-			<div id="C23" data-position="37" class="right-lane chance"></div>
-			<div id="C24" data-position="14" class="left-lane property"></div>
-			<div id="C25" data-position="38" class="right-lane property"></div>
-			<div id="C26" data-position="13" class="left-lane electric"></div>
-			<div id="C27" data-position="39" class="right-lane luxury-tax"></div>
-			<div id="C28" data-position="12" class="left-lane property"></div>
-			<div id="C29" data-position="40" class="right-lane property"></div>
-			<div id="C30" data-position="11" class="bottom-lane prison"></div>
-			<div id="C31" data-position="10" class="bottom-lane property"></div>
-			<div id="C32" data-position="9" class="bottom-lane property"></div>
-			<div id="C33" data-position="8" class="bottom-lane chance"></div>
-			<div id="C34" data-position="7" class="bottom-lane property"></div>
-			<div id="C35" data-position="6" class="bottom-lane railroad"></div>
-			<div id="C36" data-position="5" class="bottom-lane income-tax"></div>
-			<div id="C37" data-position="4" class="bottom-lane property"></div>
-			<div id="C38" data-position="3" class="bottom-lane chest"></div>
-			<div id="C39" data-position="2" class="bottom-lane property"></div>
-			<div id="C40" data-position="1" class="bottom-lane go"></div>
+			<div id="C13" data-position="32" class="board-block right-lane property"></div>
+			<div id="C14" data-position="19" class="board-block left-lane property"></div>
+			<div id="C15" data-position="33" class="board-block right-lane property"></div>
+			<div id="C16" data-position="18" class="board-block left-lane chest"></div>
+			<div id="C17" data-position="34" class="board-block right-lane chest"></div>
+			<div id="C18" data-position="17" class="board-block left-lane property"></div>
+			<div id="C19" data-position="35" class="board-block right-lane property"></div>
+			<div id="C20" data-position="16" class="board-block left-lane property railroad"></div>
+			<div id="C21" data-position="36" class="board-block right-lane property railroad"></div>
+			<div id="C22" data-position="15" class="board-block left-lane property"></div>
+			<div id="C23" data-position="37" class="board-block right-lane chance"></div>
+			<div id="C24" data-position="14" class="board-block left-lane property"></div>
+			<div id="C25" data-position="38" class="board-block right-lane property"></div>
+			<div id="C26" data-position="13" class="board-block left-lane property electric"></div>
+			<div id="C27" data-position="39" class="board-block right-lane luxury-tax"></div>
+			<div id="C28" data-position="12" class="board-block left-lane property"></div>
+			<div id="C29" data-position="40" class="board-block right-lane property"></div>
+			<div id="C30" data-position="11" class="board-block bottom-lane jail"></div>
+			<div id="C31" data-position="10" class="board-block bottom-lane property"></div>
+			<div id="C32" data-position="9" class="board-block bottom-lane property"></div>
+			<div id="C33" data-position="8" class="board-block bottom-lane chance"></div>
+			<div id="C34" data-position="7" class="board-block bottom-lane property"></div>
+			<div id="C35" data-position="6" class="board-block bottom-lane property railroad"></div>
+			<div id="C36" data-position="5" class="board-block bottom-lane income-tax"></div>
+			<div id="C37" data-position="4" class="board-block bottom-lane property"></div>
+			<div id="C38" data-position="3" class="board-block bottom-lane chest"></div>
+			<div id="C39" data-position="2" class="board-block bottom-lane property"></div>
+			<div id="C40" data-position="1" class="board-block bottom-lane go"></div>
+		</div>
+		<div id="inventory" class="inventory">
+		</div>
 		</div>
 		
 		<!-- <dialog id="dialog">
