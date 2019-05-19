@@ -8,22 +8,7 @@
 
 .inventory {
 	background-color: black;
-	height: 50vh;
 }
-
-/*
-.board::before {
-  content: '';
-  width: 0;
-  padding-bottom: 100%;
-  grid-row: 1 / 1;
-  grid-column: 1 / 1;
-}
-.board > *:first-child {
-  grid-row: 1 / 1;
-  grid-column: 1 / 1;
-}
-*/
 
 .board {
 	/*grid-column: span 2;*/

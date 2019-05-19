@@ -1,12 +1,12 @@
 /* Players */
 
 #player0, #player1, #player2, #player3 {
-	height: 3rem;
-	width: 3rem;
+	height: 2rem;
+	width: 2rem;
 	background-size: contain;
 	position: absolute;
-	bottom: 10px;
-	left: 34px;
+	top: calc(50% - (2rem / 2));
+	left: calc(50% - (2rem / 2));
 	/*animation-name: player_movement;*/
 	animation-duration: 0.5s;
 	animation-fill-mode: forwards;

@@ -37,9 +37,26 @@ body {
 
 #roll {
 	visibility: hidden;
+	/*
 	left: 18rem;
     top: 15rem;
     position: relative;
+	*/
+}
+
+#dice {
+	font-size: 13vh;
+	/*
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+	*/
 }
 
 .board-block {
@@ -115,19 +132,6 @@ body {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 0.4vw;
 	text-transform: uppercase;
-}
-
-#dice {
-	font-size: 13vh;
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-	user-select: none;
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	-o-user-select: none;
 }
 
 .swal-footer {

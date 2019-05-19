@@ -1,6 +1,6 @@
 import Board from './Board.js';
 // TODO: create instance and assign element used
-// TODO: parameterize elements instead of getElemenyBy
+// TODO: parameterize elements instead of getElementBy
 
 /**
  * Computes the name of the animation chain for css
@@ -82,8 +82,8 @@ class Dice {
 		
 		// and display the related unicode
 		// reference here http://xahlee.info/comp/unicode_games_cards.html
-		dice_faces += "&#x268" + dice1Value + ";";
-		dice_faces += "&#x268" + dice2Value + ";";
+		dice_faces += `&#x268${dice1Value};`;
+		dice_faces += `&#x268${dice2Value};`;
 		this.dice.innerHTML = dice_faces;
 		
 		// count player's consequent equal rolls
@@ -92,7 +92,7 @@ class Dice {
 		}
 		
 		// if the player rolled equals for 3rd time, sent him to jail
-		// TODO: some kind the animations for this are clanky
+		// TODO: some times the animations for this are clanky
 		if(player.roll_count == 3) {
 			let jail_position = parseInt(Board.jail.dataset.position);
 			diceResult = (player.position > jail_position) ? 40 - player.position + jail_position : jail_position - player.position;
@@ -112,7 +112,7 @@ class Dice {
 				player.position = player.position + diceResult;
 				
 			// move list to next player from the list or use the same if dices were equal
-			if(dice1Value != dice2Value || player.roll_count == 3) {
+			if(dice1Value !== dice2Value || player.roll_count === 3) {
 				// reset player's roll count
 				player.roll_count = 0;
 				Board.nextPlayer();

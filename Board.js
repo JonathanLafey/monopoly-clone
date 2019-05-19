@@ -45,7 +45,7 @@ class Board {
 	 * Provided the json configuration of the properties it initializes all properties on board
 	 * @param {Object} properties_json A json with all properties for the board
 	 */
-	configureProperties(properties_json) {	
+	configureProperties (properties_json) {	
 		for (let property of this.properties) {
 			// get config for each property based on the id (property and mark up)
 			let property_config =  properties_json.find(p => p.id === property.id);
@@ -161,6 +161,42 @@ class Board {
 			property_name.appendChild(document.createTextNode(luxuryTaxConfig.title));
 			this.luxuryTax.appendChild(property_name);
 		}
+	}
+
+	/**
+	 * Dynamically builds the animation stylesheet,
+	 * computed based on the various element sizes
+	 */
+	setupAnimations () {
+		// create a new stylesheet
+		let animations = document.createElement('style');
+		// add it on head
+		document.head.appendChild(animations);
+		// keep only the CSSStyleSheet object
+		animations = animations.sheet;
+		
+		let startFrame;
+		let endFrame;
+		const {width: propertyWidth, height: propertyHeight} = this.properties[0].getBoundingClientRect();
+		// create all the needed animations
+		// TODO: add animations for the rest of the board
+		for(let i=1; i <= 40; i++) {
+			if(i === 1) {
+				// the first one always starts from point 0
+				startFrame = `{transform: translate(0, 0);}`;
+			} else {
+				startFrame = endFrame;
+			}
+			if(i === 40) {
+				// the last one always ends on point 0
+				endFrame = `{transform: translate(0, 0);}`;
+				animations.insertRule(`@keyframes player_movement${i}_1 { 0% ${startFrame} 100% ${endFrame} }`, animations.rules.length);
+			} else {
+				endFrame = `{transform: translateX(calc(-${propertyWidth}px * ${i} - ((100% - 2px) / 2)));}`;
+				animations.insertRule(`@keyframes player_movement${i}_${i+1}{ 0% ${startFrame} 100% ${endFrame} }`, animations.rules.length);
+			}
+		}
+		console.log(animations);
 	}
 }
 

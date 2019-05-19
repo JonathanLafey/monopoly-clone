@@ -10,6 +10,7 @@ import Dice from './Dice.js';
 	// this requires a server to serve the json file
 	const properties_json = await fetch('properties.json').then(response => response.json());
 	Board.configureProperties(properties_json);
+	Board.setupAnimations();
 	
 	// open settings at start
 	Menu.openSettingsMenu();
